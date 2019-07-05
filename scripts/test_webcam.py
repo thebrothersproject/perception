@@ -5,9 +5,12 @@ via the new Pythonic cv2 interface.  Press <esc> to quit.
 
 import cv2
 
-
 def show_webcam(mirror=False):
-    cam = cv2.VideoCapture(2)
+    # The '0' argument for VideoCapture can be changed to match the index of the video device you wish to use.
+    # ls -l /dev/ | grep video
+    # this will give you a list of the video devices. Run this command before and after connecting USB webcam to determine index of camera
+    # This index should correspond to the "/dev/videoX" argument index passed to the docker container.
+    cam = cv2.VideoCapture(0)
     while True:
         ret_val, img = cam.read()
         if mirror: 
